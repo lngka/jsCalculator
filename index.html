@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title></title>
+    <title>Calkulator</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,8 +11,37 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
-
-
+    <div id="frame" class="col-11 col-sm-7 col-md-5 col-lg-4 col-xl-3">
+      <form>
+        <input type="text" id="topDisplay" disabled>
+        <br>
+        <input type="text" id="botDisplay" disabled>
+        <br>
+        <input type="button" id="keys" value="C" onclick="newInput('C')">
+        <input type="button" id="keys" value="CE" onclick="newInput('CE')">
+        <input type="button" id="keys" value="sqrt()" onclick="newInput('sqrt')">
+        <input type="button" id="keys" value="*" onclick="newInput('*')">
+        <br>
+        <input type="button" id="keys" value="7" onclick="newInput('7')">
+        <input type="button" id="keys" value="8" onclick="newInput('8')">
+        <input type="button" id="keys" value="9" onclick="newInput('9')">
+        <input type="button" id="keys" value="/" onclick="newInput('/')">
+        <br>
+        <input type="button" id="keys" value="4" onclick="newInput('4')">
+        <input type="button" id="keys" value="5" onclick="newInput('5')">
+        <input type="button" id="keys" value="6" onclick="newInput('6')">
+        <input type="button" id="keys" value="+" onclick="newInput('+')">
+        <br>
+        <input type="button" id="keys" value="1" onclick="newInput('1')">
+        <input type="button" id="keys" value="2" onclick="newInput('2')">
+        <input type="button" id="keys" value="3" onclick="newInput('3')">
+        <input type="button" id="keys" value="-" onclick="newInput('-')">
+        <br>
+        <input type="button" id="keys" value="." onclick="newInput('.')">
+        <input type="button" id="keys" value="0" onclick="newInput('0')">
+        <input type="button" id="equalKeys" value="=" onclick="newInput('=')">
+      </form>
+    </div>
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
