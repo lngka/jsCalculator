@@ -2,6 +2,7 @@ var topDisplay = document.getElementById("topDisplay");
 var botDisplay = document.getElementById("botDisplay");
 var mathExpression = "";
 var reset = true;
+var result = undefined;
 
 function newInput(input){
   if (reset)
@@ -9,6 +10,7 @@ function newInput(input){
 
   switch (input) {
     case "C":
+      result = undefined;
       clear();
       break;
     case "CE":
@@ -26,13 +28,37 @@ function newInput(input){
 }
 
 function update(input){
-  topDisplay.value += input;
-  mathExpression += input;
+  console.log(result);
+  // auto add 0 before comma if needed for decimal number
+  if (input === "." && (isNaN(topDisplay.value.charAt(topDisplay.value.length - 1)) || topDisplay.value == "")) {
+    topDisplay.value += "0" + ".";
+    mathExpression += "0" + ".";
+  }
+  // enable chaining last result to new expression
+  else if (input.search(/[-+*/]/) == 0 && result !== undefined) {
+    topDisplay.value += result + input;
+    mathExpression += result + input;
+  }
+
+  else if (topDisplay.value.slice(-2) === "^2" && input.search(/[-+*/]/) !== 0){
+    // do nothing, accept only operator after squared symbol ^2
+  }
+  else {
+    result = undefined;
+    topDisplay.value += input;
+    mathExpression += input;
+  }
 }
 
 function sqrt(input){
-  topDisplay.value += "^2";
-  mathExpression += "^2";
+  if (topDisplay.value.slice(-2) === "^2" || topDisplay.value == "") {
+    // do nothing, chaining ^2 not allowed
+    // starting with ^2 not allowed
+  }
+  else {
+    topDisplay.value += "^2";
+    mathExpression += "^2";
+  }
 }
 
 function clear(){
@@ -42,6 +68,11 @@ function clear(){
 }
 
 function clearEntry(){
+  // clear 2 chars if last chars are squared symbol ^2
+  if (topDisplay.value.slice(-2) === "^2") {
+    topDisplay.value = topDisplay.value.slice(0, -2);
+  }
+  else // clear 1 char
     topDisplay.value = topDisplay.value.slice(0, -1);
 }
 
@@ -52,25 +83,23 @@ function solve(){
   }
 
   parseMathExpression();
-  var result = eval(mathExpression);
+  result = eval(mathExpression);
   mathExpression = "";
 
 
   if (result === undefined)
-    botDisplay.value = "Syntax Error";
+    botDisplay.value = "life's good, go get one";
   else
     botDisplay.value = result;
   reset = true;
 }
 
+// look for patterns like "number^2" in mathExpression
+// change that to "number*number"
+// this enable evaluation of squared expression with eval()
 function parseMathExpression(){
-  console.log("parsing================================");
   var sqrtPattern = /(\d+(\.\d+)?)(\^2)/g;
   mathExpression = mathExpression.replace(sqrtPattern, function(match, p1, p2, p3){
-    console.log("Original mathExpression " + mathExpression);
-    console.log("match " + match);
-    console.log("num " + p1);
     return p1 + "*" + p1;
   });
-  console.log("parsed " + mathExpression);
 }
