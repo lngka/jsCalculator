@@ -13,9 +13,9 @@
   <body>
     <div id="frame" class="col-11 col-sm-7 col-md-5 col-lg-4 col-xl-3">
       <form>
-        <input type="text" id="topDisplay" disabled>
+        <input type="text" id="topDisplay" value="0123456789"disabled>
         <br>
-        <input type="text" id="botDisplay" disabled>
+        <input type="text" id="botDisplay" value="0123456789"disabled>
         <br>
         <input type="button" id="keys" value="C" onclick="newInput('C')">
         <input type="button" id="keys" value="CE" onclick="newInput('CE')">
@@ -37,9 +37,9 @@
         <input type="button" id="keys" value="3" onclick="newInput('3')">
         <input type="button" id="keys" value="-" onclick="newInput('-')">
         <br>
-        <input type="button" id="keys" value="." onclick="newInput('.')">
-        <input type="button" id="keys" value="0" onclick="newInput('0')">
-        <input type="button" id="equalKeys" value="=" onclick="newInput('=')">
+        <input type="button" id="keys" class="lastrow" value="." onclick="newInput('.')">
+        <input type="button" id="keys" class="lastrow" value="0" onclick="newInput('0')">
+        <input type="button" id="equalKeys" class="" value="=" onclick="newInput('=')">
       </form>
     </div>
     <!-- jQuery first, then Tether, then Bootstrap JS. -->

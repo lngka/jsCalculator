@@ -68,12 +68,15 @@ function clear(){
 }
 
 function clearEntry(){
-  // clear 2 chars if last chars are squared symbol ^2
+  // clear 2 chars if last 2 chars are "^2"
   if (topDisplay.value.slice(-2) === "^2") {
     topDisplay.value = topDisplay.value.slice(0, -2);
+    mathExpression = mathExpression.slice(0, -2);
   }
-  else // clear 1 char
+  else { // clear 1 char
     topDisplay.value = topDisplay.value.slice(0, -1);
+    mathExpression = mathExpression.slice(0, -1);
+  }
 }
 
 function solve(){
