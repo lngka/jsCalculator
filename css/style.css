@@ -61,12 +61,3 @@ body {
 .lastrow{
     transform: translate(-3%, 0);
 }
-
-@font-face {
-    font-family: 'segment7standard';
-    src: url('segment7standard-webfont.woff2') format('woff2'),
-         url('segment7standard-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
